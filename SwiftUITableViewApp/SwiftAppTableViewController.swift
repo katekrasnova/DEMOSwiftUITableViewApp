@@ -83,9 +83,9 @@ class SwiftAppTableViewController: UITableViewController, NSFetchedResultsContro
             do {
                 try fetchResultsController.performFetch()
                 restaurants = fetchResultsController.fetchedObjects!
-                print("Сохранение удалось")
+                print("Not saved")
             } catch let error as NSError {
-                print("Не удалось получить данные \(error), \(error.userInfo)")
+                print("Not get data \(error), \(error.userInfo)")
             }
         }
     }
@@ -179,14 +179,14 @@ class SwiftAppTableViewController: UITableViewController, NSFetchedResultsContro
     //touch table view cell -> alert action
 //    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        let ac = UIAlertController(title: nil, message: "Выберите действие", preferredStyle: .actionSheet)
-//        let call = UIAlertAction(title: "Позвонить: +7(347)111-111\(indexPath.row)", style: .default, handler:
+//        let call = UIAlertAction(title: "Call: +7(347)111-111\(indexPath.row)", style: .default, handler:
 //            { (action: UIAlertAction) -> Void in
-//                let alertC = UIAlertController(title: nil, message: "Вызов невозможен", preferredStyle: .alert)
+//                let alertC = UIAlertController(title: nil, message: "call impossible", preferredStyle: .alert)
 //                let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
 //                alertC.addAction(ok)
 //                self.present(alertC, animated: true, completion: nil)
 //        })
-//        let cancel = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
+//        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
 //        let isVisitedTitle = self.restaurantIsVisited[indexPath.row] ? "Я не был здесь" : "Я был здесь"
 //        let isVisited = UIAlertAction(title: isVisitedTitle, style: .default, handler: { action in
 //            let cell = tableView.cellForRow(at: indexPath)
@@ -214,14 +214,14 @@ class SwiftAppTableViewController: UITableViewController, NSFetchedResultsContro
 //    }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let share = UITableViewRowAction(style: .default, title: "Поделиться", handler: { (action, indexPath) in
-            let defaultText = "Я сейчас в " + self.restaurants[indexPath.row].name!
+        let share = UITableViewRowAction(style: .default, title: "Share", handler: { (action, indexPath) in
+            let defaultText = "I'm at the " + self.restaurants[indexPath.row].name!
             if let image = UIImage(data: self.restaurants[indexPath.row].image as! Data) {
                 let activityController = UIActivityViewController(activityItems: [defaultText, image], applicationActivities: nil)
                 self.present(activityController, animated: true, completion: nil)
             }
         })
-        let delete = UITableViewRowAction(style: .default, title: "Удалить", handler: { (action, indexPath) in
+        let delete = UITableViewRowAction(style: .default, title: "Delete", handler: { (action, indexPath) in
             self.restaurants.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
             if let context = (UIApplication.shared.delegate as? AppDelegate)?.coreDataStack.persistentContainer.viewContext {
@@ -231,9 +231,9 @@ class SwiftAppTableViewController: UITableViewController, NSFetchedResultsContro
                 
                 do {
                     try context.save()
-                    print("Объект удален")
+                    print("Object is deleted")
                 } catch let error as NSError {
-                    print("Не удалось удалить объект \(error), \(error.userInfo)")
+                    print("Object is not deleted \(error), \(error.userInfo)")
                 }
             }
         })

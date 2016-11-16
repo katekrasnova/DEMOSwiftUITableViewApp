@@ -10,7 +10,7 @@ import UIKit
 
 class AboutTableViewController: UITableViewController {
 
-    let sectionsHeaders = ["Мы в социальных сетях", "Наши сайты"]
+    let sectionsHeaders = ["We in social networks", "Our sites"]
     let sectionsContent = [["facebook", "vk", "youtube"], ["swiftbook.ru", "forum.swiftbook.ru"]]
     let firstSectionLinks = ["https://www.facebook.com/swiftbook.ru/", "https://vk.com/swiftbook", "https://www.youtube.com/channel/UCXlCPCsB09ftBA5bQfiSWoQ"]
     

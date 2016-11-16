@@ -33,7 +33,7 @@ class NewEateryTableViewController: UITableViewController, UIImagePickerControll
     
     @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
         if nameTextField.text == "" || adressTextField.text == "" || typeTextField.text == "" {
-            let alertController = UIAlertController(title: nil, message: "Не все поля заполнены", preferredStyle: .alert)
+            let alertController = UIAlertController(title: nil, message: "Fill in all the fields", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             alertController.addAction(okAction)
             present(alertController, animated: true, completion: nil)
@@ -50,9 +50,9 @@ class NewEateryTableViewController: UITableViewController, UIImagePickerControll
                 }
                 do {
                     try context.save()
-                    print("Сохранение удалось")
+                    print("Saved")
                 } catch let error as NSError {
-                    print("Не удалось сохранить данные \(error), \(error.userInfo)")
+                    print("Not saveed \(error), \(error.userInfo)")
                 }
                 saveToCloud(restaurant)
             }
@@ -115,14 +115,14 @@ class NewEateryTableViewController: UITableViewController, UIImagePickerControll
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
-            let alertController = UIAlertController(title: "Источник фотографии", message: nil, preferredStyle: .actionSheet)
-            let cameraAction = UIAlertAction(title: "Камера", style: .default, handler: { (action) in
+            let alertController = UIAlertController(title: "Source of the photo", message: nil, preferredStyle: .actionSheet)
+            let cameraAction = UIAlertAction(title: "Camera", style: .default, handler: { (action) in
                 self.chooseImagePickerACtion(sourse: .camera)
             })
-            let photoLibAction = UIAlertAction(title: "Фото", style: .default, handler: { (action) in
+            let photoLibAction = UIAlertAction(title: "Photo", style: .default, handler: { (action) in
                 self.chooseImagePickerACtion(sourse: .photoLibrary)
             })
-            let cancelAction = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
             
             alertController.addAction(cameraAction)
             alertController.addAction(photoLibAction)

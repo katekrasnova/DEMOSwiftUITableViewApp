@@ -10,8 +10,8 @@ import UIKit
 
 class PageViewController: UIPageViewController {
 
-    var headersArray = ["Записывайте", "Находите"]
-    var subheadersArray = ["Создайте свой список любимых ресторанов", "Найдите и отметьте на карте ваши любимые рестораны"]
+    var headersArray = ["Record", "Find"]
+    var subheadersArray = ["Create your list of favorite restaurants", "Find and mark on the map your favorite restaurants"]
     var imagesArray = ["food", "iphoneMap"]
     
     override func viewDidLoad() {

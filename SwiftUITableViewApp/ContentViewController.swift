@@ -46,8 +46,8 @@ class ContentViewController: UIViewController {
         pageButton.layer.borderColor = (#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)).cgColor
         
         switch index {
-        case 0: pageButton.setTitle("Дальше", for: .normal)
-        case 1: pageButton.setTitle("Открыть", for: .normal)
+        case 0: pageButton.setTitle("Next", for: .normal)
+        case 1: pageButton.setTitle("Open", for: .normal)
         default:
             break
         }

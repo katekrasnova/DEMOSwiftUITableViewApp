@@ -71,17 +71,17 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     
     switch indexPath.row {
     case 0:
-      cell.keyLabel.text = "Название"
+      cell.keyLabel.text = "Name"
       cell.valueLabel.text = restaurant!.name
     case 1:
-      cell.keyLabel.text = "Тип"
+      cell.keyLabel.text = "Type"
       cell.valueLabel.text = restaurant!.type
     case 2:
-      cell.keyLabel.text = "Адрес"
+      cell.keyLabel.text = "Location"
       cell.valueLabel.text = restaurant!.location
     case 3:
-      cell.keyLabel.text = "Я там был?"
-      cell.valueLabel.text = restaurant!.isVisited ? "Да" : "Нет"
+      cell.keyLabel.text = "Were you there?"
+      cell.valueLabel.text = restaurant!.isVisited ? "Yes" : "No"
     default:
       break
     }
