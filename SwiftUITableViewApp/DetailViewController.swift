@@ -19,7 +19,8 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
   @IBAction func unwindSegue(segue: UIStoryboardSegue) {
     guard let svc = segue.source as? RateViewController else { return }
     guard let rating = svc.restRating else { return }
-    rateButton.setImage(UIImage(named: rating), for: .normal)
+    rateButton.setImage(UIImage(named:rating), for: .normal)
+    restaurant?.rating = rating
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -37,6 +38,9 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
       button.layer.borderWidth = 1
       button.layer.borderColor = UIColor.white.cgColor
     }
+    
+    rateButton.setImage(UIImage(named:(restaurant?.rating)!), for: .normal)
+    
     tableView.estimatedRowHeight = 38
     tableView.rowHeight = UITableViewAutomaticDimension
     

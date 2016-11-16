@@ -18,6 +18,12 @@
 		D122884F1DCA986D00366171 /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D122884E1DCA986D00366171 /* DetailTableViewCell.swift */; };
 		D1684F811DD1A4A80040510B /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1684F801DD1A4A80040510B /* CoreDataStack.swift */; };
 		D1684F841DD1A6C50040510B /* SwiftUITableViewApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D1684F821DD1A6C50040510B /* SwiftUITableViewApp.xcdatamodeld */; };
+		D1684F861DD1E7D30040510B /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1684F851DD1E7D30040510B /* ContentViewController.swift */; };
+		D1684F881DD1E7FF0040510B /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1684F871DD1E7FF0040510B /* PageViewController.swift */; };
+		D1684F8B1DD20F030040510B /* AboutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1684F8A1DD20F030040510B /* AboutTableViewController.swift */; };
+		D1684F8D1DD4C92E0040510B /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1684F8C1DD4C92E0040510B /* WebViewController.swift */; };
+		D1684F901DD4D4650040510B /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1684F8F1DD4D4650040510B /* CloudKit.framework */; };
+		D1684F921DD4DB310040510B /* PopularTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1684F911DD4DB310040510B /* PopularTableViewController.swift */; };
 		D168E70C1DD0E6C1001FCC50 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D168E70B1DD0E6C1001FCC50 /* MapViewController.swift */; };
 		D168E70F1DD0E74E001FCC50 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D168E70E1DD0E74E001FCC50 /* MapKit.framework */; };
 		D168E7111DD119C7001FCC50 /* NewEateryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D168E7101DD119C7001FCC50 /* NewEateryTableViewController.swift */; };
@@ -37,6 +43,13 @@
 		D122884E1DCA986D00366171 /* DetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
 		D1684F801DD1A4A80040510B /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		D1684F831DD1A6C50040510B /* SwiftUITableViewApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SwiftUITableViewApp.xcdatamodel; sourceTree = "<group>"; };
+		D1684F851DD1E7D30040510B /* ContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
+		D1684F871DD1E7FF0040510B /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		D1684F8A1DD20F030040510B /* AboutTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutTableViewController.swift; sourceTree = "<group>"; };
+		D1684F8C1DD4C92E0040510B /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		D1684F8E1DD4D45D0040510B /* SwiftUITableViewApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftUITableViewApp.entitlements; sourceTree = "<group>"; };
+		D1684F8F1DD4D4650040510B /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		D1684F911DD4DB310040510B /* PopularTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopularTableViewController.swift; sourceTree = "<group>"; };
 		D168E70B1DD0E6C1001FCC50 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		D168E70E1DD0E74E001FCC50 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		D168E7101DD119C7001FCC50 /* NewEateryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewEateryTableViewController.swift; sourceTree = "<group>"; };
@@ -48,6 +61,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D168E70F1DD0E74E001FCC50 /* MapKit.framework in Frameworks */,
+				D1684F901DD4D4650040510B /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,13 +90,18 @@
 			children = (
 				D12288341DC9386600366171 /* AppDelegate.swift */,
 				D1684F801DD1A4A80040510B /* CoreDataStack.swift */,
-				D12288381DC9386600366171 /* Main.storyboard */,
 				D12288461DCA218300366171 /* SwiftAppTableViewController.swift */,
 				D12288481DCA256B00366171 /* SwiftAppTableViewCell.swift */,
 				D10161391DCB14DC00B438BB /* RateViewController.swift */,
 				D168E70B1DD0E6C1001FCC50 /* MapViewController.swift */,
 				D168E7101DD119C7001FCC50 /* NewEateryTableViewController.swift */,
+				D1684F8A1DD20F030040510B /* AboutTableViewController.swift */,
+				D1684F8C1DD4C92E0040510B /* WebViewController.swift */,
+				D1684F911DD4DB310040510B /* PopularTableViewController.swift */,
+				D1684F8E1DD4D45D0040510B /* SwiftUITableViewApp.entitlements */,
+				D1684F891DD1E9950040510B /* Page */,
 				D12288501DCA988E00366171 /* Detail */,
+				D12288381DC9386600366171 /* Main.storyboard */,
 				D1684F821DD1A6C50040510B /* SwiftUITableViewApp.xcdatamodeld */,
 				D122883B1DC9386600366171 /* Assets.xcassets */,
 				D122883D1DC9386600366171 /* LaunchScreen.storyboard */,
@@ -100,9 +119,19 @@
 			name = Detail;
 			sourceTree = "<group>";
 		};
+		D1684F891DD1E9950040510B /* Page */ = {
+			isa = PBXGroup;
+			children = (
+				D1684F851DD1E7D30040510B /* ContentViewController.swift */,
+				D1684F871DD1E7FF0040510B /* PageViewController.swift */,
+			);
+			name = Page;
+			sourceTree = "<group>";
+		};
 		D168E70D1DD0E74E001FCC50 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D1684F8F1DD4D4650040510B /* CloudKit.framework */,
 				D168E70E1DD0E74E001FCC50 /* MapKit.framework */,
 			);
 			name = Frameworks;
@@ -146,6 +175,12 @@
 							com.apple.Maps.iOS = {
 								enabled = 1;
 							};
+							com.apple.Push = {
+								enabled = 0;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
 						};
 					};
 				};
@@ -187,15 +222,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				D122884F1DCA986D00366171 /* DetailTableViewCell.swift in Sources */,
+				D1684F8B1DD20F030040510B /* AboutTableViewController.swift in Sources */,
 				D1684F841DD1A6C50040510B /* SwiftUITableViewApp.xcdatamodeld in Sources */,
 				D12288351DC9386600366171 /* AppDelegate.swift in Sources */,
+				D1684F881DD1E7FF0040510B /* PageViewController.swift in Sources */,
 				D12288471DCA218300366171 /* SwiftAppTableViewController.swift in Sources */,
 				D12288491DCA256B00366171 /* SwiftAppTableViewCell.swift in Sources */,
 				D1684F811DD1A4A80040510B /* CoreDataStack.swift in Sources */,
 				D122884B1DCA893D00366171 /* DetailViewController.swift in Sources */,
 				D168E7111DD119C7001FCC50 /* NewEateryTableViewController.swift in Sources */,
+				D1684F861DD1E7D30040510B /* ContentViewController.swift in Sources */,
+				D1684F8D1DD4C92E0040510B /* WebViewController.swift in Sources */,
 				D101613A1DCB14DC00B438BB /* RateViewController.swift in Sources */,
 				D168E70C1DD0E6C1001FCC50 /* MapViewController.swift in Sources */,
+				D1684F921DD4DB310040510B /* PopularTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,6 +356,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SwiftUITableViewApp/SwiftUITableViewApp.entitlements;
 				DEVELOPMENT_TEAM = VFT96SPKF7;
 				INFOPLIST_FILE = SwiftUITableViewApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -329,6 +370,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SwiftUITableViewApp/SwiftUITableViewApp.entitlements;
 				DEVELOPMENT_TEAM = VFT96SPKF7;
 				INFOPLIST_FILE = SwiftUITableViewApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

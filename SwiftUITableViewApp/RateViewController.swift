@@ -18,6 +18,7 @@ class RateViewController: UIViewController {
     
     
     @IBAction func rateRestaurant(sender: UIButton) {
+        
         switch sender.tag {
         case 0:
             restRating = "bad"

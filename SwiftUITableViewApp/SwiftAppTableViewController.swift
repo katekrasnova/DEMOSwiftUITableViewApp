@@ -19,8 +19,11 @@ class SwiftAppTableViewController: UITableViewController, NSFetchedResultsContro
 //    var restaurantIsVisited = [Bool](repeatElement(false, count: 15))
     
     var fetchResultsController:NSFetchedResultsController<Restaurant>!
-
+    var searchController: UISearchController!
+    var filteredResultArray: [Restaurant] = []
     var restaurants: [Restaurant] = []
+    
+    
 //        Restaurant(name: "Ogonёk Grill&Bar", type: "ресторан", location: "Уфа", image: "ogonek.jpg", isVisited: false),
 //        Restaurant(name: "Елу", type: "ресторан", location: "Уфа", image: "elu.jpg", isVisited: false),
 //        Restaurant(name: "Bonsai", type: "ресторан", location: "Москва, Симферопольский бульвар 37, вход со стороны улицы", image: "bonsai.jpg", isVisited: false),
@@ -46,8 +49,24 @@ class SwiftAppTableViewController: UITableViewController, NSFetchedResultsContro
         navigationController?.hidesBarsOnSwipe = true
     }
     
+    func filterContentFor(searchText text:String) {
+        filteredResultArray = restaurants.filter({ (restaurant) -> Bool in
+            return (restaurant.name?.lowercased().contains(text.lowercased()))!
+        })
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        tableView.tableHeaderView = searchController.searchBar
+        searchController.searchBar.delegate = self
+        searchController.searchBar.barTintColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
+        searchController.searchBar.tintColor = .white
+        
+        definesPresentationContext = true
         
         tableView.estimatedRowHeight = 85
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -68,6 +87,20 @@ class SwiftAppTableViewController: UITableViewController, NSFetchedResultsContro
             } catch let error as NSError {
                 print("Не удалось получить данные \(error), \(error.userInfo)")
             }
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let userDefaults = UserDefaults.standard
+        let wasIntroWatched = userDefaults.bool(forKey: "wasIntroWatched")
+        
+        guard !wasIntroWatched else { return }
+        
+        if let pageVC = storyboard?.instantiateViewController(withIdentifier: "pageViewController")
+            as? PageViewController {
+             present(pageVC, animated: true, completion: nil)
         }
     }
     
@@ -106,24 +139,41 @@ class SwiftAppTableViewController: UITableViewController, NSFetchedResultsContro
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+        if searchController.isActive && searchController.searchBar.text != "" {
+            return filteredResultArray.count
+        }
         return restaurants.count
+    }
+    
+    func restaurantToDisplayAt(indexPath: IndexPath) -> Restaurant {
+        let restaurant: Restaurant
+        if searchController.isActive && searchController.searchBar.text != "" {
+            restaurant = filteredResultArray[indexPath.row]
+        } else {
+            restaurant = restaurants[indexPath.row]
+        }
+        return restaurant
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! SwiftAppTableViewCell
         
-        cell.thumbnailImageView.image = UIImage(data: restaurants[indexPath.row].image as! Data)
+        let restaurant = restaurantToDisplayAt(indexPath: indexPath)
+        
+        cell.thumbnailImageView.image = UIImage(data: restaurant.image as! Data)
         cell.thumbnailImageView.layer.cornerRadius = 32.5
         cell.thumbnailImageView.clipsToBounds = true
-        cell.nameLabel.text = restaurants[indexPath.row].name
-        cell.locationLabel.text = restaurants[indexPath.row].location
-        cell.typeLabel.text = restaurants[indexPath.row].type
+        cell.nameLabel.text = restaurant.name
+        cell.locationLabel.text = restaurant.location
+        cell.typeLabel.text = restaurant.type
 
-        
-        cell.accessoryType = self.restaurants[indexPath.row].isVisited ? .checkmark : .none
+        cell.accessoryType = restaurant.isVisited ? .checkmark : .none
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     //touch table view cell -> alert action
@@ -196,15 +246,31 @@ class SwiftAppTableViewController: UITableViewController, NSFetchedResultsContro
         if segue.identifier == "detailSegue" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 let destinationVC = segue.destination as! DetailViewController
-                destinationVC.restaurant = self.restaurants[indexPath.row]
+                destinationVC.restaurant = restaurantToDisplayAt(indexPath: indexPath)
             }
         }
     }
     
 }
 
+extension SwiftAppTableViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentFor(searchText: searchController.searchBar.text!)
+        tableView.reloadData()
+    }
+}
 
-
+extension SwiftAppTableViewController: UISearchBarDelegate {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        if searchBar.text == "" {
+            navigationController?.hidesBarsOnSwipe = false
+        }
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        navigationController?.hidesBarsOnSwipe = true
+    }
+}
 
 
 
